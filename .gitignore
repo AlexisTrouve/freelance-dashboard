@@ -1,0 +1,24 @@
+# Excel temp files
+~$*
+*.tmp
+
+# Excel lock files
+*.xlk
+
+# Windows reserved names
+nul
+con
+prn
+aux
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Backups
+*.bak
+*_backup_*.xlsm
+
+# Local config
+.mcp.json
+.claude/
