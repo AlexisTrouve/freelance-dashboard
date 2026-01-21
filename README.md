@@ -1,54 +1,35 @@
 # Freelance Dashboard
 
-Excel KPI Dashboard for freelance activity tracking - Revenue, time tracking, clients with pivot tables, charts and VBA automation.
+Excel KPI Dashboard for freelance activity tracking - Revenue, time tracking, clients with dynamic formulas, pivot tables, charts and VBA automation.
 
 ## Features
 
-- **Structured Data Tables** - Clients, time entries, revenue tracking
-- **Dynamic KPIs** - Total revenue, hourly rate, active clients, top client
-- **Pivot Tables** - Revenue by client, by month, hours by project
-- **Interactive Charts** - Pie chart, bar charts, trends
-- **Slicers** - Filter by client and period
-- **VBA Automation** - One-click refresh, rebuild dashboard
-- **Professional Design** - Clean layout, conditional formatting
+- **Dynamic KPIs** - All metrics calculated with formulas (SUM, SUMIF, INDEX/MATCH)
+- **Structured Data Tables** - tbl_Clients, tbl_Temps, tbl_Revenus
+- **Pivot Tables** - Hours by client and project
+- **Interactive Charts** - Pie chart (revenue), bar chart (hours)
+- **Slicers** - Filter by client
+- **Task Checklist** - Interactive checkboxes with linked cells
+- **VBA Automation** - One-click refresh
+
+## Dashboard Preview
+
+| KPI | Formula |
+|-----|---------|
+| Total Revenue | `=SUM(tbl_Revenus[Montant])` |
+| Total Hours | `=SUM(tbl_Temps[Heures])` |
+| Hourly Rate | `=ROUND(CA/Hours,2)` |
+| Client Count | `=COUNTA(tbl_Clients[ClientID])` |
+| Top Client | `=INDEX(...MATCH(MAX(...)))` |
 
 ## File Structure
 
 | Sheet | Content |
 |-------|---------|
-| Dashboard | Main view with KPIs, charts and slicers |
+| Dashboard | KPIs, charts, pivot table, slicer, task list |
 | Data_Clients | Client list (ID, name, sector, start date) |
 | Data_Temps | Time entries (date, client, project, hours) |
 | Data_Revenus | Revenue entries (date, client, amount, type) |
-| Config | Settings (year, default rate, objectives) |
-| TCD_Data | Pivot tables data |
-
-## KPIs
-
-- Total Revenue
-- Current Month Revenue
-- Total Hours
-- Average Hourly Rate
-- Number of Active Clients
-- Top Client (by revenue)
-- Hours This Week
-- Unique Projects Count
-
-## VBA Macros
-
-| Macro | Description |
-|-------|-------------|
-| `RefreshDashboard` | Recalculates formulas and refreshes pivot tables |
-| `QuickRefresh` | Silent refresh (no message) |
-| `RebuildAll` | Rebuilds entire dashboard from scratch |
-| `CreatePivotTables` | Creates/recreates pivot tables |
-| `CreateCharts` | Creates/recreates charts |
-| `CreateSlicers` | Creates/recreates slicers |
-| `ApplyDesign` | Applies professional formatting |
-
-## Screenshots
-
-*Coming soon*
 
 ## Requirements
 
@@ -57,10 +38,10 @@ Excel KPI Dashboard for freelance activity tracking - Revenue, time tracking, cl
 
 ## Usage
 
-1. Open `FreelanceDashboard.xlsm`
+1. Open `templates/FreelanceDashboard.xlsm`
 2. Enable macros when prompted
-3. Add your data in Data_Clients, Data_Temps, Data_Revenus
-4. Press `Alt+F8` and run `RefreshDashboard` to update
+3. Add your data in the Data_* sheets
+4. Dashboard updates automatically (or run `RefreshDashboard` macro)
 
 ## Author
 
